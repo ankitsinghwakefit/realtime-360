@@ -31,6 +31,7 @@ export default defineConfig({
   ],
   optimizeDeps: {
     exclude: ['vuetify'],
+    include: ['object-assign', 'point-in-polygon', 'rbush', 'earcut', 'geojson-rbush', 'deep-equal', 'geojson-equality', 'density-clustering', 'skmeans']
   },
   define: { 'process.env': {} },
   resolve: {
