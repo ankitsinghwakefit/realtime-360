@@ -1,77 +1,84 @@
 <template>
-  <v-app>
-    <v-main>
-      <v-container class="pa-4" fluid>
-        <v-card-title>Live Vehicle Map</v-card-title>
-        <v-card class="map-card">
-          <l-map :zoom="13" :center="[25.276987, 55.296249]" class="map-content">
-            <l-tile-layer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="&copy; OpenStreetMap contributors"
-            />
-            <l-marker
-                v-for="v in vehicles"
-                :key="v.id"
-                :lat-lng="[v.location.lat, v.location.lng]"
-                :icon="getMarkerIcon(v.status)"
-                @click="selectVehicle(v.id)"
-            >
-            <l-popup>{{ v.name }}</l-popup>
-            </l-marker>
-          </l-map>
-        </v-card>
-      </v-container>
-    </v-main>
-  </v-app>
+  <v-container fluid>
+    <div ref="mapContainer" class="map"></div>
+  </v-container>
 </template>
 
 <script setup>
-import { LMap, LTileLayer, LMarker, LPopup } from "vue3-leaflet";
-import "leaflet/dist/leaflet.css";
+import { ref, onMounted } from 'vue';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import vehiclesData from '../mock/vehicles.json'
 
-import { computed } from "vue";
-import vehicleData from '@/mock/vehicles.json';
+// Import custom marker icons
+import greenIconUrl from '@/assets/marker-icon-green.png';
+import redIconUrl from '@/assets/marker-icon-red.png';
+import greyIconUrl from '@/assets/marker-icon-grey.png';
+import shadowUrl from '@/assets/marker-shadow.png';
 
-const vehicles = computed(()=>{
-    console.log('veh', vehicleData);
-    return vehicleData;
-})
+const mapContainer = ref(null);
 
-const selectVehicle = (id)=>{
-    console.log('vehicle clicked with Id', id)
-}
-
-function getMarkerIcon(status) {
-  let color = 'blue';
-  if(status === 'Online'){
-    color = 'green'
-  } else if (status === 'Alert'){
-    color = 'red'
-  } else if(status === 'Offline'){
-    color = 'grey'
-  }
+// Create Leaflet icon instances
+const getIcons = (iconType)=>{
   return new L.Icon({
-    iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
-  })
+  iconUrl: iconType,
+  shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+})
 }
+
+function getIcon(status) {
+  switch (status) {
+    case 'Online': return getIcons(greenIconUrl);
+    case 'Alert': return getIcons(redIconUrl);
+    case 'Offline': return getIcons(greyIconUrl);
+    default: return getIcons(shadowUrl);
+  }
+}
+
+onMounted(() => {
+  const map = L.map(mapContainer.value).setView([25.276987, 55.296249], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; realtime-iot-360 contributors'
+  }).addTo(map);
+
+  // Add vehicle markers
+  vehiclesData.forEach(vehicle => {
+    const marker = L.marker([vehicle.location.lat, vehicle.location.lng], { icon: getIcon(vehicle.status) })
+      .addTo(map)
+      .bindTooltip(vehicle.name || vehicle.plate, { permanent: false });
+
+    marker.on('click', () => {
+      const popupContent = `
+        <div>
+          <strong>${vehicle.name} (${vehicle.plate})</strong><br/>
+          Status: ${vehicle.status}<br/>
+          Last updated: ${vehicle.lastUpdated}<br/>
+          <button id="view-history-${vehicle.id}" style="margin-top:5px;">View History</button>
+        </div>
+      `;
+      marker.bindPopup(popupContent).openPopup();
+
+      setTimeout(() => {
+        const btn = document.getElementById(`view-history-${vehicle.id}`);
+        if (btn) {
+          btn.onclick = () => {
+            console.log(`vehicle clicked with ID: ${vehicle.id} `)
+          };
+        }
+      }, 0);
+    });
+  });
+});
 </script>
 
 <style>
-html, body, #app {
-  height: 100%;
-  margin: 0;
-}
-
-.map-card {
+.map {
   height: 80vh;
-  margin: auto;
-}
-
-.map-content {
-  height: 100%;
   width: 100%;
-  border-radius: 8px;
 }
 </style>
