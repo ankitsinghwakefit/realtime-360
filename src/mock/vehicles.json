@@ -7,6 +7,7 @@
     "type": "Truck",
     "location": { "lat": 25.276987, "lng": 55.296249 },
     "lastUpdated": "2025-07-02T10:30:00Z",
+    "lastLocation": "Abu dhabi",
     "history": [
       { "lat": 25.2769, "lng": 55.2961, "timestamp": "2025-07-02T09:30:00Z" },
       { "lat": 25.2775, "lng": 55.2970, "timestamp": "2025-07-02T09:45:00Z" },
@@ -21,6 +22,7 @@
     "type": "Van",
     "location": { "lat": 25.280000, "lng": 55.300000 },
     "lastUpdated": "2025-07-02T10:00:00Z",
+    "lastLocation": "Dubai",
     "history": [
       { "lat": 25.2790, "lng": 55.2990, "timestamp": "2025-07-02T09:00:00Z" }
     ]
@@ -30,9 +32,10 @@
     "name": "Bus 1",
     "plate": "BUS-789",
     "status": "Offline",
-    "type": "Van",
+    "type": "Bus",
     "location": { "lat": 24.280000, "lng": 55.300000 },
     "lastUpdated": "2025-07-02T10:00:00Z",
+    "lastLocation": "Dubai",
     "history": [
       { "lat": 25.2790, "lng": 55.2990, "timestamp": "2025-07-02T09:00:00Z" }
     ]
