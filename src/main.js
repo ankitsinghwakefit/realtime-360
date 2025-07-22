@@ -19,8 +19,12 @@ import 'unfonts.css'
 // Import Leaflet CSS so map and markers show correctly
 import 'leaflet/dist/leaflet.css'
 
+// Import Store to pass it to app
+import store from './store' 
+
 const app = createApp(App)
 
 registerPlugins(app)
+app.use(store) 
 
 app.mount('#app')
