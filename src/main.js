@@ -22,9 +22,12 @@ import 'leaflet/dist/leaflet.css'
 // Import Store to pass it to app
 import store from './store' 
 
+import router from './router'
+
 const app = createApp(App)
 
 registerPlugins(app)
 app.use(store) 
+app.use(router)
 
 app.mount('#app')
