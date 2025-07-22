@@ -25,6 +25,11 @@
       class="elevation-1"
       disable-pagination
     >
+        <template #item.name="{ item }">
+            <router-link :to="`/vehicle/${item.id}/history`" class="text-primary">
+            {{ item.name }}
+            </router-link>
+        </template>
       <template #item.status="{ item }">
         <v-chip :color="getStatusColor(item.status)" dark>
           {{ item.status }}
