@@ -9,6 +9,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useStore } from 'vuex'
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { useRouter } from 'vue-router';
 
 // Import custom marker icons
 import greenIconUrl from '@/assets/marker-icon-green.png';
@@ -17,6 +18,7 @@ import greyIconUrl from '@/assets/marker-icon-grey.png';
 import shadowUrl from '@/assets/marker-shadow.png';
 
 const store = useStore()
+const router = useRouter();
 const mapContainer = ref(null);
 
 const vehiclesData = computed(() => store.getters.getVehicleData)
@@ -62,7 +64,7 @@ onMounted(() => {
         <strong>${vehicle.name} (${vehicle.plate})</strong><br/>
         Status: ${vehicle.status}<br/>
         Last updated: ${vehicle.lastUpdated}<br/>
-        <button id="view-history-${vehicle.id}" style="margin-top:5px;">View History</button>
+        <button class="popup-btn" id="view-history-${vehicle.id}">View History</button>
         </div>
         `;
         marker.getPopup().setContent(popupContent);
@@ -73,6 +75,7 @@ onMounted(() => {
         if (btn) {
           btn.onclick = () => {
             console.log(`vehicle clicked with ID: ${vehicle.id} `)
+            router.push(`/vehicle/${vehicle.id}/history`)
           };
         }
       }, 0);
@@ -85,5 +88,23 @@ onMounted(() => {
 .map {
   height: 80vh;
   width: 100%;
+}
+.popup-btn {
+  background-color: #1F2937;
+  margin-top: 10px;
+  color: #F3F4F6;
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.popup-btn:hover {
+  background-color: #374151;
+}
+
+.popup-btn:active {
+  background-color: #111827;
 }
 </style>

@@ -7,11 +7,14 @@
     "type": "Truck",
     "location": { "lat": 25.276987, "lng": 55.296249 },
     "lastUpdated": "2025-07-02T10:30:00Z",
-    "lastLocation": "Abu dhabi",
+    "lastLocation": "Abu Dhabi",
     "history": [
-      { "lat": 25.2769, "lng": 55.2961, "timestamp": "2025-07-02T09:30:00Z" },
-      { "lat": 25.2775, "lng": 55.2970, "timestamp": "2025-07-02T09:45:00Z" },
-      { "lat": 25.2780, "lng": 55.2980, "timestamp": "2025-07-02T10:00:00Z" }
+      { "lat": 25.2750, "lng": 55.2940, "timestamp": "2025-07-21T09:00:00Z" },
+      { "lat": 25.2755, "lng": 55.2945, "timestamp": "2025-07-21T09:15:00Z" },
+      { "lat": 25.2760, "lng": 55.2950, "timestamp": "2025-07-21T09:30:00Z" },
+      { "lat": 25.2765, "lng": 55.2955, "timestamp": "2025-07-21T09:45:00Z" },
+      { "lat": 25.2770, "lng": 55.2960, "timestamp": "2025-07-21T10:00:00Z" },
+      { "lat": 25.276987, "lng": 55.296249, "timestamp": "2025-07-21T10:30:00Z" }
     ]
   },
   {
@@ -24,7 +27,11 @@
     "lastUpdated": "2025-07-02T10:00:00Z",
     "lastLocation": "Dubai",
     "history": [
-      { "lat": 25.2790, "lng": 55.2990, "timestamp": "2025-07-02T09:00:00Z" }
+      { "lat": 25.2780, "lng": 55.2980, "timestamp": "2025-07-21T09:00:00Z" },
+      { "lat": 25.2785, "lng": 55.2985, "timestamp": "2025-07-21T09:30:00Z" },
+      { "lat": 25.2790, "lng": 55.2990, "timestamp": "2025-07-21T10:00:00Z" },
+      { "lat": 25.2795, "lng": 55.2995, "timestamp": "2025-07-21T10:30:00Z" },
+      { "lat": 25.2800, "lng": 55.3000, "timestamp": "2025-07-21T11:00:00Z" }
     ]
   },
   {
@@ -35,9 +42,112 @@
     "type": "Bus",
     "location": { "lat": 24.280000, "lng": 55.300000 },
     "lastUpdated": "2025-07-02T10:00:00Z",
-    "lastLocation": "Dubai",
+    "lastLocation": "Sharjah",
     "history": [
-      { "lat": 25.2790, "lng": 55.2990, "timestamp": "2025-07-02T09:00:00Z" }
+      { "lat": 24.2790, "lng": 55.2990, "timestamp": "2025-07-02T09:00:00Z" }
+    ]
+  },
+  {
+    "id": "v-004",
+    "name": "Car 1",
+    "plate": "CAR-456",
+    "status": "Online",
+    "type": "Car",
+    "location": { "lat": 25.2048, "lng": 55.2708 },
+    "lastUpdated": "2025-07-02T11:00:00Z",
+    "lastLocation": "Dubai Marina",
+    "history": [
+      { "lat": 25.2050, "lng": 55.2710, "timestamp": "2025-07-02T10:30:00Z" }
+    ]
+  },
+  {
+    "id": "v-005",
+    "name": "Truck 2",
+    "plate": "TRK-987",
+    "status": "Offline",
+    "type": "Truck",
+    "location": { "lat": 25.2854, "lng": 55.3200 },
+    "lastUpdated": "2025-07-02T08:00:00Z",
+    "lastLocation": "Jebel Ali",
+    "history": [
+      { "lat": 25.2850, "lng": 55.3190, "timestamp": "2025-07-02T07:00:00Z" }
+    ]
+  },
+  {
+    "id": "v-006",
+    "name": "Van 3",
+    "plate": "VAN-654",
+    "status": "Online",
+    "type": "Van",
+    "location": { "lat": 25.3548, "lng": 55.4042 },
+    "lastUpdated": "2025-07-02T12:00:00Z",
+    "lastLocation": "Deira",
+    "history": [
+      { "lat": 25.3550, "lng": 55.4050, "timestamp": "2025-07-02T11:30:00Z" }
+    ]
+  },
+  {
+    "id": "v-007",
+    "name": "Bus 2",
+    "plate": "BUS-321",
+    "status": "Alert",
+    "type": "Bus",
+    "location": { "lat": 25.0950, "lng": 55.1610 },
+    "lastUpdated": "2025-07-02T10:45:00Z",
+    "lastLocation": "Al Ain",
+    "history": [
+      { "lat": 24.4750, "lng": 54.3650, "timestamp": "2025-07-21T07:00:00Z" },
+      { "lat": 24.4760, "lng": 54.3660, "timestamp": "2025-07-21T07:30:00Z" },
+      { "lat": 24.4770, "lng": 54.3670, "timestamp": "2025-07-21T08:00:00Z" },
+      { "lat": 24.4780, "lng": 54.3680, "timestamp": "2025-07-21T08:15:00Z" },
+      { "lat": 24.4800, "lng": 54.3700, "timestamp": "2025-07-21T08:30:00Z" }
+    ]
+  },
+  {
+    "id": "v-008",
+    "name": "Car 2",
+    "plate": "CAR-852",
+    "status": "Offline",
+    "type": "Car",
+    "location": { "lat": 25.2172, "lng": 55.3240 },
+    "lastUpdated": "2025-07-02T09:15:00Z",
+    "lastLocation": "Bur Dubai",
+    "history": [
+      { "lat": 25.2150, "lng": 55.3220, "timestamp": "2025-07-21T10:00:00Z" },
+      { "lat": 25.2155, "lng": 55.3225, "timestamp": "2025-07-21T10:30:00Z" },
+      { "lat": 25.2160, "lng": 55.3230, "timestamp": "2025-07-21T11:00:00Z" },
+      { "lat": 25.2165, "lng": 55.3235, "timestamp": "2025-07-21T11:30:00Z" },
+      { "lat": 25.2172, "lng": 55.3240, "timestamp": "2025-07-21T12:00:00Z" }
+    ]
+  },
+  {
+    "id": "v-009",
+    "name": "Truck 3",
+    "plate": "TRK-753",
+    "status": "Online",
+    "type": "Truck",
+    "location": { "lat": 25.0657, "lng": 55.1713 },
+    "lastUpdated": "2025-07-02T12:30:00Z",
+    "lastLocation": "Jumeirah",
+    "history": [
+      { "lat": 25.0600, "lng": 55.1650, "timestamp": "2025-07-21T09:00:00Z" },
+      { "lat": 25.0610, "lng": 55.1660, "timestamp": "2025-07-21T09:30:00Z" },
+      { "lat": 25.0630, "lng": 55.1680, "timestamp": "2025-07-21T10:00:00Z" },
+      { "lat": 25.0645, "lng": 55.1695, "timestamp": "2025-07-21T10:30:00Z" },
+      { "lat": 25.0657, "lng": 55.1713, "timestamp": "2025-07-21T11:15:00Z" }
+    ]
+  },
+  {
+    "id": "v-010",
+    "name": "Van 4",
+    "plate": "VAN-159",
+    "status": "Alert",
+    "type": "Van",
+    "location": { "lat": 25.2744, "lng": 55.3075 },
+    "lastUpdated": "2025-07-02T11:45:00Z",
+    "lastLocation": "Downtown Dubai",
+    "history": [
+      { "lat": 25.2740, "lng": 55.3060, "timestamp": "2025-07-02T11:00:00Z" }
     ]
   }
 ]
