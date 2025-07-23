@@ -35,6 +35,9 @@
           {{ item.status }}
         </v-chip>
       </template>
+      <template #item.lastUpdated="{ item }">
+            {{ formatDate(item.lastUpdated) }}
+        </template>
     </v-data-table>
   </v-container>
 </template>
@@ -42,6 +45,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useStore } from 'vuex'
+import { formatDate } from "@/utils/date-helper"
 
 const store = useStore()
 
@@ -61,14 +65,14 @@ const headers = [
 const filteredVehicles = computed(() => {
   return store.getters.getVehicleData.filter(v => {
     const matchesSearch =
-      v.name.toLowerCase().includes(search.value.toLowerCase()) ||
-      v.plate.toLowerCase().includes(search.value.toLowerCase())
+      v.name?.toLowerCase().includes(search.value?.toLowerCase() || '') ||
+      v.plate?.toLowerCase().includes(search.value?.toLowerCase() || '')
     const matchesStatus = selectedStatus.value ? v.status === selectedStatus.value : true
     return matchesSearch && matchesStatus
   })
 })
 
-function getStatusColor(status) {
+const getStatusColor = (status) => {
   switch (status) {
     case 'Online': return 'green'
     case 'Offline': return 'grey'

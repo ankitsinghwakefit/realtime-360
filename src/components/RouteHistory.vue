@@ -24,8 +24,8 @@ import { ref, onMounted, computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 import L from 'leaflet'
-import {getIcons} from '@/composables/icon-helper'
-import { haversine } from '@/composables/calculation-helper'
+import {getIcon} from '@/utils/icon-helper'
+import { haversine } from '@/utils/calculation-helper'
 
 const route = useRoute()
 const store = useStore()
@@ -51,8 +51,8 @@ onMounted(() => {
   // Start and end markers
   const start = vehicle.value.history[0]
   const end = vehicle.value.history[vehicle.value.history.length - 1]
-  L.marker([start.lat, start.lng], { icon: getIcons('green') }).addTo(map).bindPopup('Start').openPopup()
-  L.marker([end.lat, end.lng], { icon: getIcons('red') }).addTo(map).bindPopup('End')
+  L.marker([start.lat, start.lng], { icon: getIcon('Online') }).addTo(map).bindPopup('Start').openPopup()
+  L.marker([end.lat, end.lng], { icon: getIcon('Alert') }).addTo(map).bindPopup('End')
 
   // Fit bounds
   const bounds = L.latLngBounds(coords)

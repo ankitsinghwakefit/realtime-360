@@ -10,26 +10,14 @@ import { useStore } from "vuex";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRouter } from "vue-router";
-import { getIcons } from "@/composables/icon-helper";
+import { getIcon } from "@/utils/icon-helper";
+import { formatDate } from "@/utils/date-helper"
 
 const store = useStore();
 const router = useRouter();
 const mapContainer = ref(null);
 
 const vehiclesData = computed(() => store.getters.getVehicleData);
-
-function getIcon(status) {
-  switch (status) {
-    case "Online":
-      return getIcons("green");
-    case "Alert":
-      return getIcons("red");
-    case "Offline":
-      return getIcons("grey");
-    default:
-      return getIcons("shadow");
-  }
-}
 
 onMounted(() => {
   const map = L.map(mapContainer.value).setView([25.276987, 55.296249], 13);
@@ -51,7 +39,7 @@ onMounted(() => {
       <div>
         <strong>${vehicle.name} (${vehicle.plate})</strong><br/>
         Status: ${vehicle.status}<br/>
-        Last updated: ${vehicle.lastUpdated}<br/>
+        Last updated: ${formatDate(vehicle.lastUpdated)}<br/>
         <button class="popup-btn" id="view-history-${vehicle.id}">View History</button>
         </div>
         `;

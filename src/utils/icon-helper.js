@@ -4,11 +4,22 @@ import redIconUrl from '@/assets/marker-icon-red.png';
 import greyIconUrl from '@/assets/marker-icon-grey.png';
 import shadowUrl from '@/assets/marker-shadow.png';
 
-export const getIcons = (iconType)=>{
-  let icon = iconType === 'green' ? greenIconUrl :  iconType === 'red' ? redIconUrl : iconType === 'grey' ? greyIconUrl : shadowUrl;
-  
+export const getIcon = (status) => {
+  switch (status) {
+    case "Online":
+      return getIcons(greenIconUrl);
+    case "Alert":
+      return getIcons(redIconUrl);
+    case "Offline":
+      return getIcons(greyIconUrl);
+    default:
+      return getIcons(shadowUrl);
+  }
+}
+
+export const getIcons = (iconType)=>{  
   return new L.Icon({
-  iconUrl: icon,
+  iconUrl: iconType,
   shadowUrl,
   iconSize: [25, 41],
   iconAnchor: [12, 41],
