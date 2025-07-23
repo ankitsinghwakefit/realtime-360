@@ -64,12 +64,15 @@ const headers = [
 
 const filteredVehicles = computed(() => {
   return store.getters.getVehicleData.filter((v) => {
+
     const matchesSearch =
       v.name?.toLowerCase().includes(search.value?.toLowerCase() || "") ||
       v.plate?.toLowerCase().includes(search.value?.toLowerCase() || "");
+
     const matchesStatus = selectedStatus.value
       ? v.status === selectedStatus.value
       : true;
+
     return matchesSearch && matchesStatus;
   });
 });

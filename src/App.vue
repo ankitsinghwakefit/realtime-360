@@ -18,7 +18,7 @@
 import { ref } from "vue";
 import { useStore } from "vuex";
 import Sidebar from "@/components/Sidebar.vue";
-const drawer = ref(true);
+const drawer = ref(false);
 const store = useStore();
 store.dispatch("fetchVehicles");
 </script>
