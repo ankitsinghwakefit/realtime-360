@@ -13,7 +13,7 @@
             <v-list-item-icon class="mr-3">
               <v-icon>mdi-truck</v-icon>
             </v-list-item-icon>
-            <v-list-item-title class="text-h6">Vehicles</v-list-item-title>
+            <v-list-item-title class="text-h6">Vehicles List</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

@@ -7,9 +7,6 @@ export default createStore({
   getters: {
     getVehicleData: (state) =>{
         return state.vehiclesData;
-    },
-    getVehicleById: (state) => (id) =>{
-        return state.vehiclesData.find(vehicle => vehicle.id === id);
     }
   },
   mutations: {

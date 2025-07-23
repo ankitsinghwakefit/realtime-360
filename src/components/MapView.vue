@@ -10,8 +10,7 @@ import { useStore } from "vuex";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useRouter } from "vue-router";
-import { getIcon } from "@/utils/icon-helper";
-import { formatDate } from "@/utils/date-helper"
+import { getIcon, formatDate, initilizeMap } from "@/utils";
 
 const store = useStore();
 const router = useRouter();
@@ -20,11 +19,8 @@ const mapContainer = ref(null);
 const vehiclesData = computed(() => store.getters.getVehicleData);
 
 onMounted(() => {
-  const map = L.map(mapContainer.value).setView([25.276987, 55.296249], 13);
-
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; realtime-iot-360 contributors",
-  }).addTo(map);
+  const map = L.map(mapContainer.value);
+  initilizeMap(map, 25.276987, 55.296249, 13);
 
   // Add vehicle markers
   vehiclesData.value.forEach((vehicle) => {
@@ -40,7 +36,9 @@ onMounted(() => {
         <strong>${vehicle.name} (${vehicle.plate})</strong><br/>
         Status: ${vehicle.status}<br/>
         Last updated: ${formatDate(vehicle.lastUpdated)}<br/>
-        <button class="popup-btn" id="view-history-${vehicle.id}">View History</button>
+        <button class="popup-btn" id="view-history-${
+          vehicle.id
+        }">View History</button>
         </div>
         `;
       marker.getPopup().setContent(popupContent);

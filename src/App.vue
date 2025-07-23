@@ -9,7 +9,7 @@
       <v-toolbar-title>My Fleet Dashboard</v-toolbar-title>
     </v-app-bar>
     <v-main>
-       <router-view />
+      <router-view />
     </v-main>
   </v-app>
 </template>
@@ -19,6 +19,6 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import Sidebar from "@/components/Sidebar.vue";
 const drawer = ref(true);
-const store = useStore()
-store.dispatch('fetchVehicles')
+const store = useStore();
+store.dispatch("fetchVehicles");
 </script>
